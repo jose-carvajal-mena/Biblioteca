@@ -1,0 +1,72 @@
+{% extends './base.html' %}
+
+{% block title %}Autores - Edicion{% endblock %}
+
+{% block body %}
+
+<div class="card w-50 mt-4" style="margin:auto;">
+  <div class="card-header">
+    <h3>Editar Autor</h3>
+  </div>
+  <div class="card-body">
+        <form action="/editar_autor/" method="POST">
+          {% csrf_token %}
+         
+                <input type="hidden" name="txtId" value="{{autor.id}}">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="nombre">Nombre</label>
+                      <input type="text" class="form-control" id="nombre" name="txtNombre" value="{{autor.nombre}}">
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="apellido">Apellido</label>
+                      <input type="text" class="form-control" id="apellido" name="txtApellido" value="{{autor.apellido}}">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="rol">Sexo</label>
+                      <select name="txtSexo" class="custom-select" value="{{autor.sexo}}">
+                          <option>Femenino</option>
+                          <option>Masculino</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="nacimiento">Fecha Nacimiento</label>
+                      <input type="date" class="form-control" id="nacimiento" name="txtNacimiento" value="{{autor.fecha_nacimiento|date:'Y-m-d'}}">
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="nacionalidad">Nacionalidad</label>
+                      <select name="txtNacionalidad" class="custom-select" value="{{autor.nacionalidad}}">
+                          <option>Chilena</option>
+                          <option>Peruana</option>
+                          <option>Mexicana</option>
+                          <option>Argentina</option>
+                          <option>Española</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="modal-footer">
+                  <a href="/autores" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                  <button type="submit" class="btn btn-primary">Guradar</button>
+                </div>
+
+        </form>
+</div>
+</div>
+{% endblock %}

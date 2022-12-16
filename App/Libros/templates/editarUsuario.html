@@ -1,0 +1,41 @@
+{% extends './base.html' %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block body %}
+
+<div class="card w-50 mt-4" style="margin:auto;">
+  <div class="card-header">
+
+    <h3>Editar Usuario</h3>
+  </div>
+  <div class="card-body">
+        <form action="/editar_usuario/" method="POST">
+          {% csrf_token %}
+         
+                <input type="hidden" name="txtId" value="{{usuario.id}}">
+          
+                <div class="form-group">
+                  <label for="email">Correo</label>
+                  <input type="email" class="form-control" id="email" name="txtEmail" value="{{usuario.email}}">
+                </div>
+                <div class="form-group">
+                  <label for="rol">Rol</label>
+                  <select name="txtRol" class="custom-select" value="{{usuario.rol}}">
+                      <option>Administrador</option>
+                      <option>Invitado</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="password">Clave</label>
+                  <input type="password" class="form-control" id="password" name="txtPassword" value="{{usuario.password}}">
+                </div>
+                <div class="modal-footer">
+                  <a href="/usuarios" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                  <button type="submit" class="btn btn-primary">Guradar</button>
+                </div>
+
+        </form>
+</div>
+</div>
+{% endblock %}
